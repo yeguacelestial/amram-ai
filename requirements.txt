@@ -1,0 +1,18 @@
+# Dependencias para Amram AI
+
+# Procesamiento de audio
+librosa>=0.10.0
+numpy>=1.20.0
+torch>=1.8.1
+torchaudio>=0.8.1
+demucs>=4.0.0  # Se instalará con pip
+pysoundfile>=0.12.0
+
+# Descargar videos
+yt-dlp>=2023.0.0
+
+# Interfaz de usuario (para la fase futura)
+# Electron y React se manejarán en la carpeta frontend
+
+# Visualización de audio
+matplotlib>=3.5.0 
