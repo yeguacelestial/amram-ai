@@ -1,18 +1,27 @@
 # Dependencias para Amram AI
 
 # Procesamiento de audio
-librosa>=0.10.0
-numpy>=1.20.0
-torch>=1.8.1
-torchaudio>=0.8.1
-demucs>=4.0.0  # Se instalará con pip
-pysoundfile>=0.12.0
+librosa>=0.10.0       # Análisis y procesamiento de audio
+numpy>=1.20.0         # Operaciones numéricas
+soundfile>=0.12.0     # Lectura/escritura de archivos de audio
 
-# Descargar videos
-yt-dlp>=2023.0.0
+# PyTorch y Demucs (separación de fuentes)
+torch>=1.8.1          # Framework de aprendizaje profundo
+torchaudio>=0.8.1     # Extensión de PyTorch para audio
+demucs>=4.0.0         # Separación de fuentes de audio
+ffmpeg-python>=0.2.0  # Procesamiento de audio/video (opcional pero recomendado)
+einops>=0.4.1         # Manipulaciones de tensores (requerido por Demucs)
+julius>=0.2.3         # Procesamiento de señales (requerido por Demucs)
 
-# Interfaz de usuario (para la fase futura)
+# Descarga de videos
+yt-dlp>=2023.0.0      # Descargar videos de YouTube
+
+# Utilidades
+tqdm>=4.60.0          # Barras de progreso
+pyyaml>=6.0           # Manejo de archivos de configuración
+
+# Interfaz de usuario (para futuras fases)
 # Electron y React se manejarán en la carpeta frontend
 
-# Visualización de audio
-matplotlib>=3.5.0 
+# Visualización de audio (opcional)
+matplotlib>=3.5.0     # Gráficos para visualización de ondas 

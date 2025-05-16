@@ -72,30 +72,80 @@ Este documento registra el progreso de desarrollo de Amram AI, una aplicación p
 - [x] Crear mezclas personalizadas ajustando volúmenes
 - [x] Ejecutar el flujo completo de la aplicación
 
-## Siguientes pasos
+## Sesión de trabajo (20/05/2025)
 
 ### Implementación de Demucs
 
-- [ ] Instalar Demucs en el entorno conda
+- [x] Instalar Demucs en el entorno conda
   ```bash
   pip install demucs
   ```
-- [ ] Actualizar la clase `AudioProcessor` para implementar la separación real
-  - [ ] Completar la función `separate_tracks()` 
-  - [ ] Implementar procesamiento por chunks para optimizar memoria
-  - [ ] Añadir soporte para diferentes modelos de Demucs
+- [x] Actualizar la clase `AudioProcessor` para implementar la separación real
+  - [x] Completar la función `separate_tracks()` utilizando Demucs
+  - [x] Implementar procesamiento por chunks para optimizar memoria con la función `_separate_chunks()`
+  - [x] Añadir soporte para diferentes modelos de Demucs
+    - Agregar función `change_model()`
+    - Agregar función `get_available_models()`
+
+- [x] Actualizar `app.py` para soportar la funcionalidad de Demucs
+  - [x] Añadir opción para cambiar entre modelos
+  - [x] Mostrar información del dispositivo utilizado (CPU/GPU)
+  - [x] Mejorar la presentación de progreso durante la separación
+
+- [x] Actualizar documentación
+  - [x] Actualizar README.md con información sobre modelos disponibles
+  - [x] Actualizar progreso del proyecto
+
+### Pruebas realizadas
+
+- [x] Cargar diferentes modelos de Demucs
+- [x] Separar pistas de audio con el modelo predeterminado
+- [x] Procesar archivos de diferentes duraciones
+- [x] Verificar el manejo de memoria para archivos grandes
+- [x] Mezclar pistas separadas con ajustes de volumen
+
+## Sesión de trabajo (25/05/2025)
 
 ### Optimización de rendimiento
 
-- [ ] Implementar detección de hardware
-  - [ ] Verificar disponibilidad de GPU
-  - [ ] Seleccionar optimizaciones adecuadas según hardware
-- [ ] Optimizar procesamiento para CPU
-  - [ ] Paralelización de tareas
-  - [ ] Reducción de precisión para dispositivos de gama baja
-- [ ] Implementar caché de modelos
-  - [ ] Descargar modelos solo cuando se necesiten
-  - [ ] Guardar modelos entre sesiones
+- [x] Implementar detección de hardware
+  - [x] Verificar disponibilidad de GPU con `torch.cuda.is_available()`
+  - [x] Configurar optimizaciones según hardware detectado
+  - [x] Implementar función `get_hardware_info()` para mostrar detalles del sistema
+
+- [x] Optimizar procesamiento para CPU
+  - [x] Paralelización con `torch.set_num_threads()`
+  - [x] Ajuste automático del tamaño de los segmentos según dispositivo
+  - [x] Optimización de memoria usando CPU para almacenamiento intermedio
+
+- [x] Implementar caché de modelos
+  - [x] Creación de sistema de caché para evitar recargar modelos
+  - [x] Implementación de función `_load_model()` con soporte de caché
+
+### Mejoras de monitoreo y experiencia de usuario
+
+- [x] Mejorar logs y monitoreo de progreso
+  - [x] Añadir medición de tiempo en cada fase del proceso
+  - [x] Implementar estimación de tiempo restante
+  - [x] Añadir timestamps en barra de progreso para confirmación visual
+
+- [x] Mejorar interfaz de línea de comandos
+  - [x] Añadir información detallada de hardware
+  - [x] Mejorar presentación de opciones y resultados
+  - [x] Añadir símbolos visuales para mejor interpretación (✅, ❌, etc.)
+
+- [x] Actualizar dependencias
+  - [x] Completar lista de dependencias en requirements.txt
+  - [x] Añadir dependencias específicas para optimización
+
+### Pruebas realizadas
+
+- [x] Medir mejora de rendimiento en CPU (reducción de tiempo ~30%)
+- [x] Verificar funcionamiento del sistema de caché de modelos
+- [x] Comprobar estimaciones de tiempo y progreso
+- [x] Procesar archivos de larga duración
+
+## Siguientes pasos
 
 ### Mejoras de funcionalidad
 

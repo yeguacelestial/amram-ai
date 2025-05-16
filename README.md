@@ -20,7 +20,7 @@ Este proyecto se encuentra actualmente en fase de desarrollo (Fase 1: Prueba de 
 - [x] Implementación básica del descargador de YouTube
 - [x] Simulación de separación de pistas (para prueba de concepto)
 - [x] Interfaz de línea de comandos para pruebas
-- [ ] Implementación de Demucs para separación real de pistas
+- [x] Implementación de Demucs para separación real de pistas
 - [ ] Optimización de rendimiento para hardware de consumo
 - [ ] Interfaz gráfica con React/Electron
 
@@ -48,31 +48,46 @@ Este proyecto se encuentra actualmente en fase de desarrollo (Fase 1: Prueba de 
    pip install demucs
    ```
 
-3. Ejecute la prueba de concepto:
+3. Ejecute la aplicación:
    ```bash
    python src/app.py
    ```
 
 ## 🎯 Uso
 
-La versión actual de prueba de concepto permite:
+La aplicación actual permite:
 
 1. Descargar audio desde YouTube proporcionando una URL
-2. Simular la separación de pistas de audio
-3. Ajustar los niveles de volumen de cada pista
-4. Mezclar las pistas con configuraciones personalizadas
+2. Separar pistas de audio usando Demucs (o utilizar separación simulada si Demucs no está disponible)
+3. Seleccionar entre diferentes modelos de Demucs para la separación
+4. Ajustar los niveles de volumen de cada pista
+5. Mezclar las pistas con configuraciones personalizadas
+
+### Modelos disponibles
+
+Amram AI incorpora varios modelos pre-entrenados de Demucs para la separación de audio:
+
+- `htdemucs`: Hybrid Transformer Demucs (modelo por defecto)
+- `htdemucs_ft`: Versión fine-tuned de htdemucs (mejor calidad, pero más lento)
+- `htdemucs_6s`: Versión de 6 fuentes, incluyendo piano y guitarra como fuentes separadas
+- `mdx`: Modelo ganador en el desafío MDX (track A), entrenado en MusDB HQ
+- `mdx_extra`: Versión con datos de entrenamiento adicionales (2do lugar en track B de MDX)
+- `mdx_q`, `mdx_extra_q`: Versiones cuantizadas de los modelos anteriores (más ligeros pero calidad ligeramente inferior)
 
 ## 🗺️ Hoja de ruta
 
 - **Fase 1** (actual): Investigación y prueba de concepto
-  - Evaluación de modelos de IA para separación de audio
+  - ✅ Evaluación de modelos de IA para separación de audio
   - Pruebas de rendimiento
   - Diseño de arquitectura
 
 - **Fase 2**: Desarrollo del núcleo de procesamiento
-  - Implementación del sistema de descarga de YouTube
-  - Integración del modelo Demucs para separación de audio
+  - ✅ Implementación del sistema de descarga de YouTube
+  - ✅ Integración del modelo Demucs para separación de audio
   - Optimizaciones de rendimiento
+    - [ ] Detección de hardware disponible
+    - [ ] Procesamiento optimizado según dispositivo
+    - [ ] Gestión eficiente de memoria para archivos grandes
 
 - **Fase 3**: Desarrollo de la interfaz de usuario
   - Implementación del diseño de UI/UX en React
@@ -91,3 +106,7 @@ Las contribuciones son bienvenidas. Por favor, abra un issue para discutir los c
 ## 📄 Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT - vea el archivo LICENSE para detalles.
+
+## 🙏 Agradecimientos
+
+Este proyecto utiliza [Demucs](https://github.com/adefossez/demucs) para la separación de pistas de audio. Agradecemos a los creadores de Demucs por su excelente trabajo y por hacer disponible esta tecnología como código abierto.
